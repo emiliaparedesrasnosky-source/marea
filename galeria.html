@@ -121,25 +121,34 @@
     <a href="contacto.html">Sumate</a>
   </nav>
 
+  <!-- Sección del Carrusel -->
   <section class="carrusel-container">
     <div class="carrusel-slide active">
-      <div class="carrusel-imagen"><img src="imagen1.jpg" alt="Últimas Noticias - Booms de Pelo"></div>
+      <div class="carrusel-imagen">
+        <img src="imagen1.jpg" alt="Booms de Pelo">
+      </div>
       <div class="carrusel-contenido">
         <span class="badge">Sustentabilidad</span>
         <h2>Booms de Pelo</h2>
         <p>Chile ha creado un filtro sustentable compuesto por una red con pelo humano y animal para descontaminar el agua y evitar la obstrucción de desagües.</p>
       </div>
     </div>
+
     <div class="carrusel-slide">
-      <div class="carrusel-imagen"><img src="imagen2.jpg" alt="El Ladrillo que Viste al Planeta"></div>
+      <div class="carrusel-imagen">
+        <img src="imagen2.jpg" alt="Ladrillo Ecológico">
+      </div>
       <div class="carrusel-contenido">
         <span class="badge">Textil & Construcción</span>
         <h2>Ladrillo de Ropa Reciclada</h2>
         <p>Un ladrillo ecológico, impermeable y resistente al fuego hecho con ropa vieja para darle una segunda vida a los desechos de la industria textil.</p>
       </div>
     </div>
+
     <div class="carrusel-slide">
-      <div class="carrusel-imagen"><img src="imagen3.jpg" alt="Basura Útil - Útiles Escolares"></div>
+      <div class="carrusel-imagen">
+        <img src="imagen3.jpg" alt="Basura Útil">
+      </div>
       <div class="carrusel-contenido">
         <span class="badge">Reciclaje</span>
         <h2>Basura Útil</h2>
@@ -147,11 +156,35 @@
       </div>
     </div>
 
-    <!-- Botones de navegación -->
     <button class="prev-btn" onclick="cambiarSlide(-1)">&#10094;</button>
     <button class="next-btn" onclick="cambiarSlide(1)">&#10095;</button>
   </section>
 
+  <!-- Script corregido -->
+  <script>
+    let currentIndex = 0;
+
+    function mostrarSlide(index) {
+      const slides = document.querySelectorAll('.carrusel-slide');
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+          slide.classList.add('active');
+        }
+      });
+    }
+
+    function cambiarSlide(direccion) {
+      const slides = document.querySelectorAll('.carrusel-slide');
+      currentIndex += direccion;
+      if (currentIndex >= slides.length) {
+        currentIndex = 0;
+      } else if (currentIndex < 0) {
+        currentIndex = slides.length - 1;
+      }
+      mostrarSlide(currentIndex);
+    }
+  </script>
   <script>
     let currentIndex = 0;
     const slides = document.querySelectorAll('.carrusel-slide');
